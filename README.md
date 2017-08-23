@@ -13,8 +13,8 @@ This is a simple project to practise node js.
 ## Installation
 
 1. Create a new db using the mongo shell and link it to the project.
-2. Create a collection with the name __items__
-3. The documents attributes are __author__ and __body__
+2. Create a collection with the name __items__.
+3. The documents attributes are __author__ and __body__.
     ex. 
     ```sh
     {
@@ -24,8 +24,18 @@ This is a simple project to practise node js.
         "__v" : 0
     }
     ```
-2. Download to your project directory and commit:
+4. Download to your project directory and commit:
 	```sh
 	npm install
 	```
+
+5. Run:
+   ```sh
+   node app.js
+   ```
+   or
+   ```sh
+   nodemon
+   ```
+
 
