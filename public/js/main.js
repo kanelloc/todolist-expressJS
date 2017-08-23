@@ -105,20 +105,63 @@ $(function(){
      * DELETE AJAX Request.
      * Success: Hide li.
      */
+    // $('#todo_items').on('click', '.delete-article', function(event){
+    //     $target     =   $(event.target);
+    //     var itemId  =   $target.attr('data-id');
+    //     $.ajax({
+    //         type:'DELETE',
+    //         url:'/todolist/'+itemId,
+    //         success: function(response) {
+    //             console.log('NEXT:'+response);
+    //             $("#"+response).hide();
+    //         },
+    //         error: function(err){
+    //             console.log(err);
+    //         }
+    //     })
+    // });
+
+    /**
+     * Delete Todo Items on click.
+     * DELETE AJAX Request.
+     * Success: Hide li.
+     * Sweet alert: on.
+     */
     $('#todo_items').on('click', '.delete-article', function(event){
         $target     =   $(event.target);
         var itemId  =   $target.attr('data-id');
-        $.ajax({
-            type:'DELETE',
-            url:'/todolist/'+itemId,
-            success: function(response) {
-                console.log('NEXT:'+response);
-                $("#"+response).hide();
-            },
-            error: function(err){
-                console.log(err);
-            }
-        })
+
+        swal({
+            title: "Are you sure?",
+            text: "You will not be able to recover this item.",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Yes, delete it!",
+            closeOnConfirm: false
+        }, function(){
+            $.ajax({
+                type:'DELETE',
+                url:'/todolist/'+itemId,
+                success: function(response) {
+                    swal({
+                        title: "",
+                        text: "File deleted",
+                        type: "success",
+                        showCancelButton: false,
+                        confirmButtonColor: "#DD6B55",
+                        confirmButtonText: "Return",
+                        closeOnConfirm: true
+                    }, function(){
+                            console.log('Deleted: '+response);
+                            $("#"+response).hide();
+                    });
+                },
+                error: function(err){
+                    console.log(err);
+                }
+            })
+        });
     });
 
     $('#showTodo_list').on('click', function() {
