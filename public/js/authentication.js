@@ -18,3 +18,32 @@ $(function() {
             }
     });
 });
+
+$(function(){
+    /**
+     * Post a new User.
+     * POST AJAX Request.
+     * Success:
+     */
+    $('#registerForm').on('submit', function(event) {
+       var email                    = $('#register_email').val();
+       var username                 = $('#register_username').val();
+       var password                 = $('#register_password').val();
+       var password_confirmation    = $('#register_password_confirmation').val();
+       event.preventDefault();
+       // console.log("Email: "+email+ " Username: " + username + " Password: " + password);
+       $.ajax({
+            url:'/auth',
+            method: "POST",
+            contentType: "application/json",
+            data: JSON.stringify({ email: email, username: username, password: password, password_confirmation: password_confirmation  }),
+            success: function(response){
+                if ($.isArray(response)) {
+                    console.log(response);
+                } else {
+                    console.log(response);
+                }
+            }
+       });
+    });
+});

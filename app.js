@@ -2,6 +2,7 @@ var express =   require('express');
 var path = require('path');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
+var expressValidator = require('express-validator');
 
 mongoose.connect('mongodb://localhost/todolist');
 let db = mongoose.connection;
@@ -36,6 +37,9 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
 
+// Express-Validator
+app.use(expressValidator());
+
 // Home Route
 app.get('/', function(req, res){
   res.render('index',
@@ -47,6 +51,9 @@ app.get('/', function(req, res){
 // Route Files
 let todolist = require('./routes/todos');
 app.use('/todolist', todolist);
+
+let auth = require('./routes/auth');
+app.use('/auth', auth);
 
 // Start Server
 app.listen(3000, function () {
