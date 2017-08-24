@@ -9,6 +9,8 @@
   "author": "Bob Kanellopoulos",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^1.0.3",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.17.2",
     "express": "^4.15.4",
     "express-validator": "^3.2.1",

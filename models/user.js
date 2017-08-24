@@ -1,5 +1,8 @@
 let mongoose = require('mongoose');
 
+var bcrypt = require('bcrypt');
+const saltRounds = 10;
+
 // user Schema
 
 let userSchema = mongoose.Schema({
@@ -15,6 +18,6 @@ let userSchema = mongoose.Schema({
         type: String,
         required: true
     }
-});
+}, { collection: 'users'});
 
 let User = module.exports = mongoose.model('User', userSchema);

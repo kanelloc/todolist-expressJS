@@ -33,15 +33,20 @@ $(function(){
        event.preventDefault();
        // console.log("Email: "+email+ " Username: " + username + " Password: " + password);
        $.ajax({
-            url:'/auth',
+            url:'/auth/register',
             method: "POST",
             contentType: "application/json",
             data: JSON.stringify({ email: email, username: username, password: password, password_confirmation: password_confirmation  }),
             success: function(response){
                 if ($.isArray(response)) {
-                    console.log(response);
+                    // console.log(response);
+                    $.each(response, function(index, value){
+                        $.notify(value.msg);
+                    });
                 } else {
+                    $('#register-modal').modal('hide');
                     console.log(response);
+                    swal("", "Account succeessfully created", "success");
                 }
             }
        });

@@ -3,11 +3,13 @@ const router    = express.Router();
 
 var expressValidator = require('express-validator');
 
+const bcrypt = require('bcryptjs');
+
 //Bring in Models
 let Item = require('../models/item');
 let User = require('../models/user');
 
-router.post('/', function(req,res) {  
+router.post('/register', function(req,res) {  
     /**
      * Requests Validation
      */
@@ -21,11 +23,30 @@ router.post('/', function(req,res) {
     var errors = req.validationErrors();
     if (errors) {
         res.send(errors);
+    }else{
+        var email       = req.body.email;
+        var username    = req.body.username;
+        var password    = req.body.password;
+
+        var salt = bcrypt.genSaltSync(10);
+        var hash_password = bcrypt.hashSync(password, salt);
+
+        var newUser =   new User({
+            username: username,
+            email: email,
+            password: hash_password
+        });
+
+        newUser.save(function(err) {
+            if (err) {
+                console.log(err);
+                return;
+            } else {
+                res.send('validation-complete');
+            }
+        });
     }
-    var password    = req.body.password;
-    var email       = req.body.email;
-    var username    = req.body.username;
-    res.send(username);
-})
+    
+});
 
 module.exports = router;
