@@ -5,10 +5,13 @@ This is a simple project to practise node js.
 ## Used
 
 - NodeJS
-- Express.js framework
+- [Express.js](https://expressjs.com/)
 - JQuery
 - AJAX
-- MongoDB
+- [MongoDB](https://www.mongodb.com/) with the help of [Mongoose](http://mongoosejs.com/)
+- [SweetAlert](http://t4t5.github.io/sweetalert/)
+- [Notify.js](https://notifyjs.com/)
+- [Bootstrap 4](https://v4-alpha.getbootstrap.com/)
 
 ## Installation
 
