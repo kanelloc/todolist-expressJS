@@ -1,0 +1,38 @@
+<!--Register modal -->
+<div class="modal fade" id="register-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content clearfix">
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span class="" aria-hidden="true">×
+                    </span>
+                </button>
+                <button type="Button" class="btn btn-primary facebook btn-block btn-large">
+                    <i class="fa fa-facebook float-left"></i>Connect with Facebook
+                </button>
+                <button type="Button" class="btn btn-danger google btn-block btn-large">
+                    <i class="fa fa-google-plus float-left"></i>Connect with Google
+                </button>
+                <div class="seperator text-center"><span class="seperator-text">Or</span></div> 
+                <form action="#" id="registerForm">
+                    <div class="form-group">
+                        <input id="register_email" type="email" class="form-control" placeholder=" Email" name="email" autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <input id="register_username" type="text" class="form-control" placeholder=" Username" name="username" autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <input id="register_password" type="password" class="form-control" placeholder=" Password" name="password" autocomplete="off">
+                        <div class="hide-show">
+                            <span class="fa fa-eye-slash"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="register_password_confirmation" class="form-control" placeholder=" Repeat Password" name="password_confirmation" autocomplete="off">
+                    </div>
+                    <button type="submit" class="btn btn-success btn-block btn-large" data-name="signin-button">Register</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

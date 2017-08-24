@@ -1,0 +1,53 @@
+.seperator{
+    margin-top: 10px;
+}
+
+.seperator-text{
+    padding-left: 20px;
+    padding-right: 20px;
+    color: #777;
+}
+.seperator::before{
+    content: "";
+    display: inline-block;
+    height: 1px;
+    width: 36%;
+    background-color: gainsboro;
+    vertical-align: middle;
+    
+}
+.seperator::after{
+    content: "";
+    display: inline-block;
+    height: 1px;
+    width: 36%;
+    background-color: gainsboro;
+    vertical-align: middle;
+    
+}
+
+button.close{
+    margin-top: -17px;
+    margin-right: -1px;
+}
+
+.facebook{
+    background-color: #337ab7;
+    border-color: #2e6da4;
+}
+
+.google{
+    background-color: #b62516;
+    border-color: #7b190f;
+}
+
+.modal-size{
+    max-width: 360px
+}
+
+.hide-show{
+    position: absolute;
+    top: 257px;
+    right: 15px;
+    width: 2.5em;
+}
