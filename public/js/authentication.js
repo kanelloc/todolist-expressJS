@@ -43,6 +43,8 @@ $(function(){
                     $.each(response, function(index, value){
                         $.notify(value.msg);
                     });
+                } else if (response == 'unique-error'){
+                    $.notify('Email already in use. Please try another.')
                 } else {
                     $('#register-modal').modal('hide');
                     console.log(response);

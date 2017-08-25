@@ -39,7 +39,8 @@ router.post('/register', function(req,res) {
 
         newUser.save(function(err) {
             if (err) {
-                console.log(err);
+                if (err.name == 'MongoError')
+                res.send('unique-error');
             } else {
                 res.send('validation-complete');
             }
