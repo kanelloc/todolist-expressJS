@@ -40,13 +40,12 @@ router.post('/register', function(req,res) {
         newUser.save(function(err) {
             if (err) {
                 console.log(err);
-                return;
             } else {
                 res.send('validation-complete');
             }
         });
     }
-    
 });
+
 
 module.exports = router;
