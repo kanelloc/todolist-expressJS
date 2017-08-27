@@ -1,5 +1,7 @@
-const express   = require('express');
-const router    = express.Router();
+const express       = require('express');
+const router        = express.Router();
+var passport        = require('passport');
+var LocalStrategy   = require('passport-local').Strategy;
 
 var expressValidator = require('express-validator');
 
@@ -48,5 +50,76 @@ router.post('/register', function(req,res) {
     }
 });
 
+
+// router.post('/login', function(req, res) {
+//     /**
+//      * Requests validation.
+//      */
+//     req.checkBody('email', 'Invalid email please try again.').isEmail();
+//     req.checkBody('email', 'Email must be between 4-100 characters long.').len(4,100);
+//     req.checkBody('password', 'Password must be between 4-127 characters long.').len(4,127);
+
+//     var errors = req.validationErrors();
+//     if (errors) {
+//         res.send(errors);
+//     }
+//     var email    = req.body.email;
+//     var password = req.body.password;
+//     res.send('OLLA OK');
+// });
+// 
+// 
+passport.use(new LocalStrategy({
+  },
+  function (email, password, done) {
+    User.findOne({email : email}, function(err, user) {
+      if (err) throw err;
+      if (!user) {
+        return done(null, false, { message: 'Incorrect email'});
+      }
+      User.comparePassword(password, user.password, function(err, isMatch)  {
+        if (err) throw err;
+        if (isMatch) {
+          return done(null, user);
+        } else{
+          return done(null, false, {message: 'Wrong password'});
+        }
+      });
+    });
+  }
+));
+
+passport.serializeUser(function(user, done) {
+  done(null, user.id);
+});
+
+passport.deserializeUser(function(id, done) {
+  User.findById(id, function(err, user) {
+    done(err, user);
+  });
+});
+
+
+router.post('/login', function(req, res, next) {
+  passport.authenticate('local', function(err, user, info) {
+    if (err) { return next(err); }
+    if (!user) {
+      res.send(info);
+    }
+    req.logIn(user, function(err) {
+      if (err) { return next(err); }
+      res.send('logedIn');
+    });
+  })(req, res, next);
+});
+
+
+
+
+
+router.get('/logout', function(req, res){
+  req.logout();
+  res.redirect('/');
+});
 
 module.exports = router;

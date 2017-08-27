@@ -3,6 +3,8 @@ var path = require('path');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var expressValidator = require('express-validator');
+var passport        = require('passport');
+var session             = require('express-session');
 
 mongoose.connect('mongodb://localhost/todolist');
 let db = mongoose.connection;
@@ -39,6 +41,15 @@ app.use(bodyParser.json())
 
 // Express-Validator
 app.use(expressValidator());
+// Passport
+app.use(session({ secret: 'keyboard cat' }));
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use(function (req, res, next) {
+    res.locals.user = req.user || null;
+    next();
+});
 
 // Home Route
 app.get('/', function(req, res){

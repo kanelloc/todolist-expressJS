@@ -11,7 +11,15 @@ nav.navbar.navbar-toggleable-md.navbar-light.bg-faded
             li.nav-item
                 a.nav-link(href='#') ######
         ul.navbar-nav
-            li.nav-item
-                a.nav-link(href='#' data-toggle="modal" data-target="#login-modal") Log In
-            li.nav-item
-                a.nav-link(href="#" data-toggle="modal" data-target="#register-modal") Register
+            if user
+                li.nav-item
+                    a.nav-link(href='#')
+                        |#{user.username}
+                li.nav-item
+                    a.nav-link(href='/auth/logout') Logout
+
+            else
+                li.nav-item
+                    a.nav-link(href='#' data-toggle="modal" data-target="#login-modal") Login
+                li.nav-item
+                    a.nav-link(href="#" data-toggle="modal" data-target="#register-modal") Register

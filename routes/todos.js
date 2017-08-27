@@ -5,7 +5,7 @@ const router    = express.Router();
 let Item = require('../models/item');
 let User = require('../models/user');
 
-router.get('/', function(req,res) {
+router.get('/', ensureAuthenticated, function(req,res) {
     Item.find({}, function(err, items) {
         if (err) {
             console.log(err);
@@ -70,5 +70,14 @@ router.delete('/:id', function(req,res){
         res.send(data_id);
     });
 });
+
+
+function ensureAuthenticated(req, res, next){
+    if (req.isAuthenticated()) {
+        return next();
+    } else {
+        res.send('OPA');
+    }
+}
 
 module.exports = router;

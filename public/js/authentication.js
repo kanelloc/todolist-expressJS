@@ -53,4 +53,25 @@ $(function(){
             }
        });
     });
+
+    $('#signinForm').on('submit', function(event){
+        var email       = $('#login_email').val();;
+        var password    = $('#login_password').val();
+        event.preventDefault();
+        // console.log("Email: "+email+ " Password: " + password);
+        $.ajax({
+            url:'/auth/login',
+            method: "POST",
+            contentType: "application/json",
+            data: JSON.stringify({ username: email, password: password }),
+            success: function(response){
+                if (response === 'logedIn') {
+                    window.location.href = '/';
+                } else{
+                    $.notify(response.message);
+                }
+                // console.log(response);
+            }
+        });
+    });
 });
