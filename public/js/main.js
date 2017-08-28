@@ -21,10 +21,10 @@ $(function(){
                                     <a href="#" id="item_body">' + newItem + '</a>\
                                 </div>\
                                 <div class="col-1">\
-                                    <a class="float-right fa-edit edit-article" href="#" data-id="'+dataId+'" ></a>\
+                                    <a class="float-right fa fa-edit edit-article" href="#" data-id="'+dataId+'" ></a>\
                                 </div>\
                                 <div class="col-1">\
-                                    <a class="float-right fa-trash-o delete-article" href="#" data-id="'+dataId+'" ></a>\
+                                    <a class="float-right fa fa-trash-o delete-article" href="#" data-id="'+dataId+'" ></a>\
                             </li>'
                 $('#myModal').modal('hide');
                 $('#create_input').val('');
