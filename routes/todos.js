@@ -6,7 +6,7 @@ let Item = require('../models/item');
 let User = require('../models/user');
 
 router.get('/', ensureAuthenticated, function(req,res) {
-    Item.find({}, function(err, items) {
+    Item.find({"author": req.user._id}, function(err, items) {
         if (err) {
             console.log(err);
         } else {
@@ -21,7 +21,7 @@ router.get('/', ensureAuthenticated, function(req,res) {
 router.post('/', function(req,res) {
     let item = new Item();
     item.body = req.body.todoItem;
-    item.author = 'Babis';
+    item.author = req.user._id;
 
     item.save(function(err){
         if (err) {
@@ -76,7 +76,7 @@ function ensureAuthenticated(req, res, next){
     if (req.isAuthenticated()) {
         return next();
     } else {
-        res.send('OPA');
+        res.redirect('/');
     }
 }
 

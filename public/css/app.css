@@ -1,3 +1,25 @@
+@import url('https://fonts.googleapis.com/css?family=Droid+Serif|Indie+Flower|Mukta+Mahee|Incosalata');
+
+body{
+    font-family: 'Mukta Mahee', sans-serif;
+}
+
 .custom-margin{
     margin-top: 15px;
+}
+
+.name-margin{
+    margin-right: 39px;
+}
+
+i.fa.fa-user-o{
+    padding-right: 3px;
+}
+
+.todo-card{
+    font-family: 'Incosalata', monospace;
+}
+
+.todo-card a{
+    text-decoration: none;
 }

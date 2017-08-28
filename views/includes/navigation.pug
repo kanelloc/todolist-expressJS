@@ -9,14 +9,21 @@ nav.navbar.navbar-toggleable-md.navbar-light.bg-faded
                     | Home 
                 span.sr-only (current)
             li.nav-item
-                a.nav-link(href='#') ######
+                a.nav-link(href='/todolist') Todolist
         ul.navbar-nav
             if user
-                li.nav-item
-                    a.nav-link(href='#')
+                //- li.nav-item
+                //-     a.nav-link(href='#')
+                //-         |#{user.username}
+                //- li.nav-item
+                //-     a.nav-link(href='/auth/logout') Logout
+                li.nav-item.dropdown.name-margin
+                    a.nav-link.dropdown-toggle(href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+                        i.fa.fa-user-o(aria-hidden="true")
                         |#{user.username}
-                li.nav-item
-                    a.nav-link(href='/auth/logout') Logout
+                    div.dropdown-menu(aria-labelledby="navbarDropdownMenuLink")
+                        a.dropdown-item(href="#") User settings
+                        a.dropdown-item(href="/auth/logout") Logout
 
             else
                 li.nav-item
