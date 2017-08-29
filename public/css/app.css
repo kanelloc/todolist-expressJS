@@ -23,3 +23,7 @@ i.fa.fa-user-o{
 .todo-card a{
     text-decoration: none;
 }
+
+.fa-placeholder{
+    font-family: FontAwesome, sans-serif;
+}
